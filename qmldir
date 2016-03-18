@@ -1,0 +1,3 @@
+LoadSide 1.0 loadside/scene.vl 
+PaintSide 1.0 paintside3/scene.vl
+Graph 1.0 paintside3/Graph.qml

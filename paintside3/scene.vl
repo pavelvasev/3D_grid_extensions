@@ -1,0 +1,56 @@
+Scene {
+  id: scen
+
+  property var gr: testgraph
+
+  Graph {
+     id: testgraph
+     rebra: [ [ [1,0,3,0], [1,0,4,0]],
+              [ [1,0,3,1], [1,1,3,0]] ]
+  }
+
+  Param {
+    text: "Цикл x"; id: xParam
+    min: 0; max: 20; enableSliding: false
+    tag: "right"
+  }
+  Param {
+    text: "Цикл y"; id: yParam
+    min: 0; max: 20; enableSliding: false
+    tag: "right"
+  }
+  Param {
+    text: "Цикл z"; id: zParam
+    min: 0; max: 20; enableSliding: false
+    tag: "right"
+  }              
+
+  GraphGrower {
+    id: gr2
+    gr: scen.gr
+    cycle: [xParam.value,yParam.value,zParam.value]
+  }
+
+  PaintRebra {
+    rebra: gr2.rebra
+    id: paintRebra
+  }
+
+  PaintVersh {
+    versh: paintRebra.foundVersh
+
+  }
+
+  // pid массив 4 числа x y z k
+  // выход: массив x y z экранных координат
+  function pointFromId( pid ) {
+    var coords = [pid[0], pid[1], pid[2]];
+    var sign = (pid[3] > 0) ? 1 : -1;
+    var delta = 0.05*sign;
+    coords[0] += delta;
+    coords[1] += delta;
+    //coords[2] += delta;
+    return coords;
+  }
+
+}

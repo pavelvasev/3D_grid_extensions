@@ -1,0 +1,69 @@
+import ""
+
+Scene {
+  id: scen
+  axes.visible: true
+
+  LoadSide {
+    id: load
+    onGraphLinesChanged: convertGraph( load.graphLines, graph );
+  }
+
+  Graph {
+     id: graph
+  }
+
+  PaintSide {
+    id: paint
+    gr: graph
+  }
+
+  Text {
+    text: "nx,ny,nz = " + graph.period.toString();
+    property var tag: "left"
+  }
+
+  function convertGraph( lines, graph )
+  {
+      // надо наполнить graph.rebra
+      var rebra = [];
+      if (!lines || lines.length < 2) return; 
+      console.log("convertGraph: загружаем граф, lines.length=",lines.length);
+      // можно сделать пропуск строк, начинающихся с #
+
+      graph.rebra = []; // обнулим текущий граф, чтобы пересчеты не пересчитывали
+
+      lines.forEach( function(item, index) {
+        if (index == 0) 
+        { 
+          // первая строка 
+          var a = item.split(/\s+/);
+          if (a.length < 3) {
+            console.error( "convertGraph: первая строка данных не содержит 3 элемента через пробел. Это плохо, не похоже на наш формат!");
+            console.log(">",item);
+            return;
+          }
+          graph.period = a;
+        }
+        else 
+        {
+          if (item.length <= 1) return;
+          //item 8 чисел
+
+          var a = item.split(/\s+/);
+          if (a.length < 8) { 
+            console.log("convertGraph: пропускаем строку, т.к. в ней менее 8 элементов"); 
+            console.log(">",item);
+            return; 
+          }
+          var b = a.map( Number );
+          //debugger;
+          a = b;
+          rebra.push( [ [a[0],a[1],a[2],a[3]], [a[4],a[5],a[6],a[7]] ] );
+        }
+      });
+      console.log("convertGraph: граф загружен, в нем кол-во ребер=",rebra.length, "а nx ny nz=",graph.nx, graph.ny, graph.nz );
+      graph.rebra = rebra;    
+ }
+
+}

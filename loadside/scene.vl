@@ -1,0 +1,64 @@
+Scene {
+  id: scen
+  text: "Отображение графов"
+
+  property var fileBase: Qt.resolvedUrl( "../graphs/Gamma" );
+
+  FontAwesome {}
+
+  Param {
+    id: nParam
+    min: 1
+    max: 2357 
+    text: "Номер графа"
+  }
+
+  Text { 
+    property var tag: "left"
+    text: '<i class="fa fa-arrow-down fa-lg"></i> '
+    color: "grey"
+    height: 20
+  }
+
+  property var fileName: fileBase + nParam.value
+  onFileNameChanged: fileParam.value = fileName
+  DataParam {
+    text: "Файл графа"
+    id: fileParam
+  }
+
+  TextLoader {
+    file: fileParam.value
+    onOutputChanged: graphText = output
+    // console.log( output.split("\n").length );
+  }
+
+  Text { 
+    property var tag: "left"
+    text: '<i class="fa fa-arrow-down fa-lg"></i> '
+    color: "grey"
+    height: 20
+  }
+
+  property var graphText: ""
+
+  Column {
+    id: grContentBlock
+    //css.border: "1px solid grey"; css.borderRadius: "4px"; css.padding: "4px"
+    property var tag: "left"
+    Text {
+      text: "Содержимое графа, строк: " + graphLines.length
+    }
+    /*
+    Button {
+      text: "Редактировать"
+      onClicked: fileParam.dataDialog.prepare_and_open();
+    }
+    */
+  }
+
+  property var graphLines: graphText.split("\n")
+  //property var graphHeadLine: graphText[0]
+  //property var graphRebraLines: graphText.slice( 1 );
+
+}

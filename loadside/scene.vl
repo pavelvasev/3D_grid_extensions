@@ -41,10 +41,7 @@ Scene {
   }
 
   Text { 
-    property var tag: "left"
-    text: ' '
-    color: "grey"
-    height: 10
+    property var tag: "left"; text: ' '; height: 10
   }
 
   Text { 

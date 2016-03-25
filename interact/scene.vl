@@ -1,0 +1,4 @@
+  PaintVershSelect {
+    versh: paintRebra.foundVersh
+    period: gr.period
+  }

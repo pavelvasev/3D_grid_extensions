@@ -13,15 +13,17 @@ Scene {
      id: graph
   }
 
+  Text {
+    text: "nx,ny,nz = " + graph.period.toString();
+    property var tag: "left"
+  }
+
   PaintSide {
     id: paint
     gr: graph
   }
 
-  Text {
-    text: "nx,ny,nz = " + graph.period.toString();
-    property var tag: "left"
-  }
+
 
   function convertGraph( lines, graph )
   {

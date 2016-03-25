@@ -41,15 +41,28 @@ Scene {
     id: paintVersh
   }
 
+  Text { 
+    property var tag: "left"; text: ' '; height: 10
+  }
+
+  VershSelectMouse {
+    versh: paintRebra.foundVersh
+    period: gr.period
+    pts: paintVersh.points
+  }
+
+/*
   IntersectVersh {
     versh: paintRebra.foundVersh
     period: gr.period
     pts: paintVersh.points 
   }
+*/
 
   // pid массив 4 числа x y z k
   // выход: массив x y z экранных координат
   function pointFromId( pid ) {
+    if (!pid) return null;
     var coords = [pid[0], pid[1], pid[2]];
     var sign = (pid[3] > 0) ? 1 : -1;
     var delta = 0.05*sign;

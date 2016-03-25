@@ -11,6 +11,40 @@ Scene {
     min: 1
     max: 2357 
     text: "Номер графа"
+    //valEnabled: false
+  }
+
+  Row {
+    property var tag: "left"
+    spacing: 5
+    /*
+    Text {
+      y:3
+      text: "Переход:"
+    }
+    */
+    Button {
+      text: "<<"
+      onClicked: nParam.value = nParam.value > nParam.min ? nParam.value-1 : nParam.max;
+    }
+    Button {
+      text: ">>"
+      onClicked: nParam.value = nParam.value < nParam.max ? nParam.value+1 : nParam.min;
+    }
+
+    /* надо делать нормальный редактируемый комбо для Param
+    ComboBox {
+      model: { var acc = [nParam.min]; var i0=100; var i1=nParam.max; for (var i=i0; i<i1; i+=100) acc.push(i); acc.push( i1 ); return acc; }
+      onCurrentTextChanged: nParam.value = Number( currentText );
+    }
+    */
+  }
+
+  Text { 
+    property var tag: "left"
+    text: ' '
+    color: "grey"
+    height: 10
   }
 
   Text { 

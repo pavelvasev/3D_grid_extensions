@@ -40,6 +40,7 @@ Item {
   property alias lines: lin
   Lines {
     id: lin
+    visible: it.visible
   }
 
 }

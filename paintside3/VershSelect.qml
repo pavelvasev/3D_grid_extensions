@@ -20,7 +20,7 @@ TextParam {
     color: [1,1,0]
     radius: 0.15
     opacity: 0.5
-    renderOrder: 1
+    renderOrder: 3
   }
 
   Text {
@@ -57,6 +57,7 @@ TextParam {
     color: [1,0,1]
     radius: 0.111
     opacity: 0.5
+    renderOrder: 2
   }
 
 }

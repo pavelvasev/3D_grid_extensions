@@ -58,8 +58,28 @@ Scene {
   Text { property var tag: "left"; text: ' '; height: 10 }
 
   CheckBoxParam {
-    text: "Подсветить и ребра"
+    text: "Подсветить ребра при выборе"
     id: cbRebraHilite
+  }
+
+  //////////////////////////////////
+  CheckBoxParam {
+    text: "Показать координаты (до 1000)"
+    id: cbTextHilite
+  }
+
+  /*
+  PaintRebra {
+    rebra: gr.rebra
+    id: paintRebra0
+    visible: false
+  }
+  */
+
+  PaintVershText {
+    versh: paintRebra.foundVersh
+    positions: paintVersh.points.positions
+    visible: cbTextHilite.value >0
   }
 
 /*

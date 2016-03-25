@@ -41,14 +41,25 @@ Scene {
     id: paintVersh
   }
 
-  Text { 
-    property var tag: "left"; text: ' '; height: 10
-  }
+  Text { property var tag: "left"; text: ' '; height: 10 }
 
   VershSelectMouse {
     versh: paintRebra.foundVersh
     period: gr.period
     pts: paintVersh.points
+    id: vsm
+  }
+
+  PaintRebraCyl {
+    rebra: findRebraOfPoint( vsm.selected, gr2.rebra )
+    visible: cbRebraHilite.value > 0
+  }
+
+  Text { property var tag: "left"; text: ' '; height: 10 }
+
+  CheckBoxParam {
+    text: "Подсветить и ребра"
+    id: cbRebraHilite
   }
 
 /*
@@ -71,5 +82,22 @@ Scene {
     //coords[2] += delta;
     return coords;
   }
+
+  ///////////////// находит ребра, в которые входит вершина p
+  function findRebraOfPoint( p, rebra ) {
+    console.log( "p=",p );
+    if (!p) return [];
+    var acc = [];
+    var reb = rebra;
+    reb.forEach(function(item, i, arr) {
+      var has1 = true;
+      var has2 = true;
+      for (var j=0; j<4; j++) if (item[0][j] != p[j]) { has1=false; break; }
+      for (var j=0; j<4; j++) if (item[1][j] != p[j]) { has2=false; break; }
+      if (has1 || has2) acc.push(item);
+    });
+    return acc;
+  }
+
 
 }

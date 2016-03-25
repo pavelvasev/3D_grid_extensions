@@ -1,4 +1,6 @@
 Item {
+  id: it
+  property var visible: true
 
   // rid массив двух pid
   // выход: массив двух точек экранных координат
@@ -35,6 +37,7 @@ Item {
   // массив уникальных индексов вершин, встреченных при отрисовке ребер
   property var foundVersh
 
+  property alias lines: lin
   Lines {
     id: lin
   }

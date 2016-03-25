@@ -23,12 +23,12 @@ Item {
   }
   */
   
+  property alias points: pts
   CreativePoints {
     radius: 0.45
     id: pts
     colors: qq.perform( versh );
   }
-  
 
   Colorizer {
     id: qq

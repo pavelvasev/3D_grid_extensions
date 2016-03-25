@@ -38,7 +38,13 @@ Scene {
 
   PaintVersh {
     versh: paintRebra.foundVersh
+    id: paintVersh
+  }
 
+  IntersectVersh {
+    versh: paintRebra.foundVersh
+    period: gr.period
+    pts: paintVersh.points 
   }
 
   // pid массив 4 числа x y z k

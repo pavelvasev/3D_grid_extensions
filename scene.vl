@@ -37,7 +37,7 @@ Scene {
         if (index == 0) 
         { 
           // первая строка 
-          var a = item.split(/\s+/);
+          var a = item.split(/\s+/).map( Number );
           if (a.length < 3) {
             console.error( "convertGraph: первая строка данных не содержит 3 элемента через пробел. Это плохо, не похоже на наш формат!");
             console.log(">",item);

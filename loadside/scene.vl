@@ -9,7 +9,7 @@ Scene {
   Param {
     id: nParam
     min: 1
-    max: 10001 //было 2357 
+    max: 14115 //было 2357 
     text: "Номер графа"
     //valEnabled: false
   }

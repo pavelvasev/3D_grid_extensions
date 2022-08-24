@@ -2,14 +2,14 @@ Scene {
   id: scen
   text: "Отображение графов"
 
-  property var fileBase: Qt.resolvedUrl( "../graphs/Gamma" );
+  property var fileBase: Qt.resolvedUrl( "../graphs1/Gamma" );
 
   FontAwesome {}
 
   Param {
     id: nParam
     min: 1
-    max: 14115 //было 2357 
+    max: 2872 //было 2357, 14115 
     text: "Номер графа"
     //valEnabled: false
   }

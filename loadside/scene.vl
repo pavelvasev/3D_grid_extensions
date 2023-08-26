@@ -16,8 +16,8 @@ Scene {
 
   Param {
     id: nParam
-    min: nSet.value == 1 ? 1 : 10000
-    max: nSet.value == 1 ? 2872 : 14115
+    min: nSet.value == 1 ? 1 : 1
+    max: nSet.value == 1 ? 2872 : 4117
     //max: 2872 //было 2357, 14115 
     text: "Номер графа"
     //valEnabled: false
